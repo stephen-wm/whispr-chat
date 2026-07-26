@@ -12,6 +12,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `.github/workflows/release.yml` automated release workflow, triggered on merge to `main`
 - `.github/workflows/auto-merge.yml` for Dependabot auto-merge of non-major dependency updates
 
+### Updated
+
+- `pre-commit` hook with preceding commit message validation step
+- `pre-push` hook to group valid commit messages prior to push to ensure no invalid commits fallthrough
+
 ## [0.1.0] - 2026-07-26
 
 ### Added
