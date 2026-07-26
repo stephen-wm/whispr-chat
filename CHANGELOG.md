@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- GitHub `labels.sh` script for creating labels for issues, PRs, etc.
+
 ## [0.1.1] - 2026-07-26
 
 ### Added
