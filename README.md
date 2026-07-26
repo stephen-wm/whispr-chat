@@ -86,6 +86,7 @@ This project enables two non-default options in `next.config.ts`:
 ## Roadmap
 
 - [x] Project scaffold, tooling (Oxlint/Oxfmt, Husky, lint-staged)
+- [x] Next themes and shadcn/ui integration
 - [ ] Anonymous username generation
 - [ ] Chat room creation (2-user cap)
 - [ ] Realtime messaging
@@ -97,40 +98,46 @@ This project enables two non-default options in `next.config.ts`:
 
 ```ASCII
 stephen-wm/whispr-chat/
-├─ .claude/                             # Claude Code workspace settings, commands, and contexts
-├─ .cspell/                             # Spell-check dictionaries
-├─ .github/                             # GitHub configuration (workflows, issue/PR templates, etc.)
-│  ├─ workflows/                        # GitHub Actions CI, release, lint, auto-merge, etc.
-│  ├─ hooks/                            # AI agent hook configurations (Ultracite)
+├─ .claude/                             # Claude Code workspace settings, slash commands, and project context
+├─ .cspell/                             # Custom spell-check dictionaries
+├─ .github/                             # GitHub configuration (workflows, templates, automation, etc.)
+│  ├─ workflows/                        # GitHub Actions workflows (CI, releases, linting, automation, etc.)
+│  ├─ hooks/                            # Ultracite AI agent hook configurations
 │  └─ dependabot.yml                    # Dependabot dependency update configuration
 ├─ .husky/                              # Git hooks for enforcing code quality and commit standards
-├─ .vscode/                             # VSCode workspace settings, recommended extensions, etc.
+├─ .vscode/                             # VS Code workspace settings, tasks, and recommended extensions
 ├─ public/                              # Static assets served directly by Next.js
-├─ src/                                 # Application source code (App Router, components, styles, utilities)
-│  └─ app/                              # Next.js App Router (routes, layouts, route handlers, etc.)
+├─ src/                                 # Application source code
+│  ├─ app/                              # Next.js App Router (routes, layouts, pages, and route handlers)
+│  ├─ components/                       # Reusable UI components and layouts
+│  ├─ hooks/                            # Custom React hooks
+│  ├─ lib/                              # Shared libraries, utilities, and application configuration
+│  ├─ providers/                        # React context providers and global application providers
+│  └─ styles/                           # Global styles and Tailwind CSS configuration imports
 ├─ .editorconfig                        # Editor-agnostic coding style rules
-├─ .env.example                         # Example .env file for contributors
+├─ .env.example                         # Example environment variables for contributors
 ├─ .gitattributes                       # Git behavior settings (line endings, diff rules, etc.)
 ├─ .gitignore                           # Files and directories excluded from version control
-├─ .lintstagedrc.json                   # lint-staged configuration for running checks on staged files
+├─ .lintstagedrc.json                   # lint-staged configuration for staged files
 ├─ .markdownlint-cli2.jsonc             # Markdown linting configuration
-├─ .npmrc                               # npm configuration (dependency behavior, install settings)
+├─ .npmrc                               # npm configuration
 ├─ .nvmrc                               # Node.js version for local development consistency
-├─ AGENTS.md                            # Guidelines for AI agents/tools interacting with the codebase
+├─ AGENTS.md                            # Instructions for AI coding agents interacting with the repository
 ├─ CHANGELOG.md                         # Project changelog (Keep a Changelog format)
-├─ CLAUDE.md                            # Project-specific instructions and context for Claude AI
-├─ commitlint.config.mjs                # Commit message linting rules (Conventional Commits)
-├─ cspell.json                          # Spell checking configuration for code and docs
+├─ CLAUDE.md                            # Project-specific instructions and context for Claude Code
+├─ commitlint.config.mjs                # Commitlint configuration (Conventional Commits)
+├─ components.json                      # shadcn/ui configuration
+├─ cspell.json                          # CSpell configuration
 ├─ LICENSE                              # Project license (AGPL-3.0)
-├─ lychee.toml                          # Dead link checker configuration
+├─ lychee.toml                          # Lychee dead link checker configuration
 ├─ next.config.ts                       # Next.js configuration
-├─ oxfmt.config.ts                      # Oxfmt configuration
-├─ oxlint.config.ts                     # Oxlint configuration
+├─ oxfmt.config.ts                      # Oxfmt formatter configuration
+├─ oxlint.config.ts                     # Oxlint linter configuration
 ├─ package-lock.json                    # Locked dependency versions for reproducible installs
-├─ package.json                         # Project metadata, scripts, and dependencies
+├─ package.json                         # Project metadata, scripts, dependencies, and package configuration
 ├─ postcss.config.mjs                   # PostCSS configuration
-├─ README.md                            # Project overview, setup, and usage instructions
-└─ tsconfig.json                        # TypeScript configuration
+├─ README.md                            # Project overview, setup, and development documentation
+└─ tsconfig.json                        # TypeScript compiler configuration
 ```
 
 ## Scripts
