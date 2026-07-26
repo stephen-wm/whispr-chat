@@ -1,6 +1,6 @@
 {
   "name": "whispr-chat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "An anonymous, ephemeral 1:1 chat app ΓÇö rooms self-destruct after 10 minutes.",
   "keywords": [
