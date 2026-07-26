@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-26
+
 ### Added
 
 - `release-it` release automation with `@release-it/conventional-changelog` and `@release-it/keep-a-changelog` plugins
@@ -36,5 +38,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enabled `turbopackFileSystemCacheForDev` in `next.config.ts` for faster local dev builds
 - Enabled `reactCompiler` in `next.config.ts` for automatic render optimization
 
-[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/stephen-wm/whispr-chat/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/stephen-wm/whispr-chat/releases/tag/v0.1.0
