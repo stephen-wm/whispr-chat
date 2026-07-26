@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      [main, develop, "feat/*", "fix/*", "chore/*", "refactor/*", "perf/*"]
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint and format check
+        run: npm run check
+
+      - name: Spell check
+        run: npm run cspell
+
+      - name: Markdown lint
+        run: npm run lint:md
+
+      - name: Build
+        run: npm run build

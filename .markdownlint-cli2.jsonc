@@ -1,0 +1,14 @@
+{
+  "config": {
+    "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json",
+    "default": true,
+    "MD010": false,
+    "MD013": false,
+    "MD025": false,
+    "MD033": false,
+    "MD041": false,
+    "MD024": false,
+    "MD029": { "style": "ordered" },
+  },
+  "ignores": ["node_modules/**/*.md", ".next/**/*.md", "CHANGELOG.md"],
+}

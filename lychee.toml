@@ -1,0 +1,30 @@
+# Lychee link checker configuration
+
+# Exclude local and non-public URLs
+exclude = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost",
+  "https://localhost",
+  "https://localhost:.*",
+  "http://127.0.0.1",
+  "https://127.0.0.1",
+  # Exclude mailto links
+  "mailto:.*",
+  # Exclude placeholder/example URLs
+  "https://stayhaus.vercel.app",
+  # GitHub anchors are often falsely flagged
+  "https://github.com/stephen-wm/stayhaus#.*",
+]
+
+# Retry for flaky servers
+max_retries = 3
+timeout = 20
+max_redirects = 5
+
+# Accept success and rate-limited responses
+accept = ["200..=299", "429"]
+
+# Cache results
+cache = true
+max_cache_age = "1d"

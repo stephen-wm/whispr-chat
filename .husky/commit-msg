@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+#. "$(dirname -- "$0")/_/husky.sh"
+
+# Validate conventional commits
+npx --no -- commitlint --edit ${1}
+
+# Spell-check commit message
+head -n 1 "$1" | npx cspell stdin

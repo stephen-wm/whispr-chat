@@ -1,0 +1,70 @@
+{
+  "name": "whispr-chat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An anonymous, ephemeral 1:1 chat app ΓÇö rooms self-destruct after 10 minutes.",
+  "keywords": [
+    "nextjs",
+    "typescript"
+  ],
+  "homepage": "https://whispr-chat.vercel.app",
+  "bugs": {
+    "url": "https://github.com/stephen-wm/whispr-chat/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Stephen Mwingira (https://github.com/stephen-wm)",
+    "email": "hellostephenwm@gmail.com",
+    "url": "https://stephenwm.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephen-wm/whispr-chat.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "lint:md": "markdownlint-cli2 **/*.{md,mdx}",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "cspell": "cspell ** --dot --cache",
+    "cspell:words": "cspell --words-only --unique ** --dot | sort >> ./.cspell/project-dictionary.txt",
+    "lychee": "lychee --config ./lychee.toml .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.1",
+    "@commitlint/config-conventional": "21.2.0",
+    "@commitlint/format": "21.2.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "cspell": "10.0.1",
+    "husky": "9.1.7",
+    "lint-staged": "17.2.0",
+    "markdownlint-cli2": "0.23.1",
+    "oxfmt": "0.60.0",
+    "oxlint": "1.75.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "ultracite": "7.9.4"
+  },
+  "engines": {
+    "node": ">=22.22.1",
+    "npm": ">=10.9.0"
+  }
+}

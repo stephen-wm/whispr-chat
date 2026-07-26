@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    ".git",
+    ".next",
+    ".claude",
+    ".husky",
+    ".vscode",
+    ".github/**/*.yml",
+    "*/**/*.sh",
+    "node_modules",
+    "tsconfig.tsbuildinfo"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-dictionary",
+      "path": "./.cspell/project-dictionary.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": [
+    "git",
+    "filetypes",
+    "npm",
+    "typescript",
+    "json",
+    "css",
+    "html",
+    "markdown",
+    "node",
+    "softwareTerms",
+    "lorem-ipsum",
+    "project-dictionary"
+  ],
+  "words": [
+    "Whispr",
+    "oxlint",
+    "ultracite",
+    "tsgolint",
+    "turbopack",
+    "lintstaged*"
+  ],
+  "ignoreWords": [],
+  "import": [],
+  "patterns": [
+    {
+      "name": "hexColor",
+      "pattern": "(?:#)?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}"
+    }
+  ],
+  "ignoreRegExpList": ["/\\b[a-z]+rc\\b/"]
+}
