@@ -3,3 +3,10 @@ logomark
 Mwingira
 Qwik
 lycheecache
+bciv
+lewagon
+lycheeverse
+hgetall
+hset
+QAAAA
+typebox
