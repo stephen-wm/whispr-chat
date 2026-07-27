@@ -6,6 +6,28 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- `next-themes` integration for application-wide light and dark theme support
+- shadcn/ui configuration with generated `components.json`
+- shadcn/ui `Button` and `Skeleton` components
+- Custom `ThemeToggle` component for switching between light and dark themes
+- `ThemeProvider` for global theme management
+- Centralized `Providers` component for composing and registering application providers
+- Custom `useTheme` hook for interacting with the active application theme
+- Custom `useHydrated` hook for safely handling client-side hydration state
+- shadcn/ui `cn` utility in `src/lib/utils.ts` for conditional class name composition
+- `SHADCN_PRESET` environment variable to document the project's selected shadcn/ui preset
+- `class-variance-authority`, `clsx`, and `tailwind-merge` utilities for shadcn/ui component styling
+
+### Changed
+
+- Moved global stylesheet from `src/app/globals.css` to `src/styles/`
+- Updated `src/app/layout.tsx` to use the centralized `Providers` component
+- Enabled `suppressHydrationWarning` on the root layout to prevent expected theme hydration mismatches
+- Updated the landing page with theme toggle
+- Expanded `README.md` project structure documentation
+
 ## [0.1.2] - 2026-07-26
 
 ### Added
