@@ -14,11 +14,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Redis client (`lib/redis.ts`) and Eden API client (`lib/eden.ts`)
 - Query provider setup for TanStack Query
 - Added shadcn/ui `card.tsx` and `spinner.tsx` UI components
+- Added custom GitHub SVG icon in `components/icons/github.tsx`
 - Expanded README with project structure, getting started guide, scripts reference, and contributor/governance documentation
 
 ### Changed
 
 - Added missing change notes for [0.2.1] and [0.2.2] in this CHANGELOG file
+- Extracted Eclipse component arguments type definition to interface
 
 ## [0.2.2] - 2026-07-27
 
