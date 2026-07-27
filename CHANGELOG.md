@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Extracted Eclipse component arguments type definition to interface
 - Added variant attribute with ghost option in GitHub button in home page header
 - Refactored the room creation mutation to validate API responses and throw errors for failed requests
+- CI build and Vercel deployment now require `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` as configured secrets, since `lib/redis.ts` initializes eagerly at module load
 
 ### Fixed
 
