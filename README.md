@@ -4,6 +4,8 @@
 
 An anonymous, ephemeral 1:1 chat app. Land on the homepage, get assigned a random anonymous username, spin up a chat room, and share the link with one other person. Rooms self-destruct after 10 minutes — no accounts, no history, no trace.
 
+**🔗 Live:** [whispr-chat-nu.vercel.app](https://whispr-chat-nu.vercel.app)
+
 > **Status:** early development. This README tracks what's actually built, not the end goal — see [Roadmap](#roadmap) below.
 
 ## Why this exists
@@ -87,8 +89,8 @@ This project enables two non-default options in `next.config.ts`:
 
 - [x] Project scaffold, tooling (Oxlint/Oxfmt, Husky, lint-staged)
 - [x] Next themes and shadcn/ui integration
-- [ ] Anonymous username generation
-- [ ] Chat room creation (2-user cap)
+- [x] Anonymous username generation
+- [x] Chat room creation (2-user cap)
 - [ ] Realtime messaging
 - [ ] 10-minute room TTL + expiry redirect
 - [ ] Rate limiting on message sends
@@ -101,19 +103,30 @@ stephen-wm/whispr-chat/
 ├─ .claude/                             # Claude Code workspace settings, slash commands, and project context
 ├─ .cspell/                             # Custom spell-check dictionaries
 ├─ .github/                             # GitHub configuration (workflows, templates, automation, etc.)
-│  ├─ workflows/                        # GitHub Actions workflows (CI, releases, linting, automation, etc.)
 │  ├─ hooks/                            # Ultracite AI agent hook configurations
+│  ├─ scripts/                          # Repository maintenance and automation scripts
+│  ├─ workflows/                        # GitHub Actions workflows (CI, releases, linting, automation, etc.)
 │  └─ dependabot.yml                    # Dependabot dependency update configuration
 ├─ .husky/                              # Git hooks for enforcing code quality and commit standards
 ├─ .vscode/                             # VS Code workspace settings, tasks, and recommended extensions
 ├─ public/                              # Static assets served directly by Next.js
 ├─ src/                                 # Application source code
 │  ├─ app/                              # Next.js App Router (routes, layouts, pages, and route handlers)
-│  ├─ components/                       # Reusable UI components and layouts
-│  ├─ hooks/                            # Custom React hooks
+│  │  ├─ api/[[...slugs]]/route.ts      # Elysia API entrypoint
+│  │  ├─ room/[roomId]/page.tsx         # Chat room page
+│  │  ├─ layout.tsx                     # Root application layout
+│  │  └─ page.tsx                       # Landing page
+│  ├─ components/                       # Shared UI components
+│  ├─ features/                         # Feature-based modules
+│  │  └─ room/                          # Room feature
+│  │     ├─ components/                 # Room-specific UI components
+│  │     ├─ hooks/                      # Room-specific React hooks
+│  │     └─ server/                     # Server-side room logic
+│  ├─ hooks/                            # Shared React hooks
 │  ├─ lib/                              # Shared libraries, utilities, and application configuration
 │  ├─ providers/                        # React context providers and global application providers
-│  └─ styles/                           # Global styles and Tailwind CSS configuration imports
+│  ├─ styles/                           # Global styles
+│  └─ proxy.ts                          # Request interception and protection
 ├─ .editorconfig                        # Editor-agnostic coding style rules
 ├─ .env.example                         # Example environment variables for contributors
 ├─ .gitattributes                       # Git behavior settings (line endings, diff rules, etc.)
@@ -122,6 +135,7 @@ stephen-wm/whispr-chat/
 ├─ .markdownlint-cli2.jsonc             # Markdown linting configuration
 ├─ .npmrc                               # npm configuration
 ├─ .nvmrc                               # Node.js version for local development consistency
+├─ .release-it.json                     # release-it release automation configuration
 ├─ AGENTS.md                            # Instructions for AI coding agents interacting with the repository
 ├─ CHANGELOG.md                         # Project changelog (Keep a Changelog format)
 ├─ CLAUDE.md                            # Project-specific instructions and context for Claude Code

@@ -6,9 +6,34 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Room creation endpoint (`POST /api/room/create`)
+- `useCreateRoom` mutation hook and homepage "Create room" flow
+- Room-join middleware (`proxy.ts`) with capacity enforcement, token-based reconnection, and collision-free anonymous username assignment per room
+- Redis client (`lib/redis.ts`) and Eden API client (`lib/eden.ts`)
+- Query provider setup for TanStack Query
+- Added shadcn/ui `card.tsx` and `spinner.tsx` UI components
+- Expanded README with project structure, getting started guide, scripts reference, and contributor/governance documentation
+
+### Changed
+
+- Added missing change notes for [0.2.1] and [0.2.2] in this CHANGELOG file
+
 ## [0.2.2] - 2026-07-27
 
+### Changed
+
+- Bumped `react` and `react-dom` from v19.2.4 to v19.2.8 respectively
+
 ## [0.2.1] - 2026-07-27
+
+### Changed
+
+- Bumped actions group versions:
+  - `lewagon/wait-on-check-action` from v1.8.0 to v1.9.0
+  - `actions/setup-node` from v6 to v7
+  - `lycheeverse/lychee-action` from v2.8.0 to v2.9.0
 
 ## [0.2.0] - 2026-07-27
 
