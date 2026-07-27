@@ -21,10 +21,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Added missing change notes for [0.2.1] and [0.2.2] in this CHANGELOG file
 - Extracted Eclipse component arguments type definition to interface
+- Added variant attribute with ghost option in GitHub button in home page header
+- Refactored the room creation mutation to validate API responses and throw errors for failed requests
 
 ### Fixed
 
-- Incorrect attribute assignment for Button component size (`variant="icon"` => `size="icon"`):
+- Incorrect replaced incorrect `variant` attribute assignment for Button component size with valid `size` attribute in home page header
+- Set correct `variant` attribute to `"ghost"` in Button component for desired GitHub button styling
 
 ## [0.2.2] - 2026-07-27
 
