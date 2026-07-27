@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { QueryProvider } from "./query-provider";
 import { ThemeProvider } from "./theme-provider";
 
 // Single <Providers> wrapper imported by the root layout.
@@ -12,5 +13,7 @@ import { ThemeProvider } from "./theme-provider";
 export const Providers = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => (
-  <ThemeProvider>{children}</ThemeProvider>
+  <ThemeProvider>
+    <QueryProvider>{children}</QueryProvider>
+  </ThemeProvider>
 );
