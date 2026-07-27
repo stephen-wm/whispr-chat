@@ -13,7 +13,7 @@ export const useCreateRoom = () => {
       const response = await api.room.create.post();
 
       if (response.status !== 200) {
-        throw new Error(response.error?.value ?? "Failed to create room");
+        throw new Error("Failed to create room");
       }
 
       const roomId = response.data?.roomId;
@@ -22,10 +22,10 @@ export const useCreateRoom = () => {
         throw new Error("Room ID was not returned");
       }
 
-      return response.data;
+      return roomId;
     },
 
-    onSuccess: ({ roomId }) => {
+    onSuccess: (roomId) => {
       router.push(`/room/${roomId}`);
     },
   });
