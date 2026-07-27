@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
 
@@ -58,7 +58,7 @@ jobs:
         run: |
           echo "Switching to manual build for ${{ matrix.language }}..."
           echo "Setting up Node and installing deps (adjust as needed):"
-          echo "  - uses: actions/setup-node@v6 with node-version-file: 'package.json'"
+          echo "  - uses: actions/setup-node@v7 with node-version-file: 'package.json'"
           echo "  npm ci --ignore-scripts"
           echo "Add actual build if required by your extractor."
           exit 1
