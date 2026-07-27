@@ -39,7 +39,7 @@ export default function Home() {
           <div className="flex gap-2 items-center justify-end ml-auto">
             <ThemeToggle className="ml-auto border-0" />
 
-            <Button asChild variant="icon">
+            <Button asChild size="icon">
               <Link
                 href="https://github.com/stephen-wm/whispr-chat#README"
                 target="_blank"
