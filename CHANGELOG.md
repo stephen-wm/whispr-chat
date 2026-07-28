@@ -6,6 +6,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Realtime messaging via `@upstash/realtime`: message send/receive, room history on join/refresh
+- `GET`/`POST /api/messages` endpoints, authenticated via room membership
+- `/api/realtime` SSE relay route
+- Realtime provider setup for Upstash Realtime
+- shadcn/ui `textarea.tsx` UI component
+
 ## [0.3.0] - 2026-07-28
 
 ### Added
