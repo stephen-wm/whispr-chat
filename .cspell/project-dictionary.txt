@@ -10,3 +10,7 @@ hgetall
 hset
 QAAAA
 typebox
+hget
+rpush
+Couldn
+lrange

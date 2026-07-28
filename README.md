@@ -91,7 +91,7 @@ This project enables two non-default options in `next.config.ts`:
 - [x] Next themes and shadcn/ui integration
 - [x] Anonymous username generation
 - [x] Chat room creation (2-user cap)
-- [ ] Realtime messaging
+- [x] Realtime messaging
 - [ ] 10-minute room TTL + expiry redirect
 - [ ] Rate limiting on message sends
 - [ ] E2E tests (Playwright)
@@ -112,8 +112,8 @@ stephen-wm/whispr-chat/
 ├─ public/                              # Static assets served directly by Next.js
 ├─ src/                                 # Application source code
 │  ├─ app/                              # Next.js App Router (routes, layouts, pages, and route handlers)
-│  │  ├─ api/[[...slugs]]/route.ts      # Elysia API entrypoint
-│  │  ├─ room/[roomId]/page.tsx         # Chat room page
+│  │  ├─ api/                           # HTTP and real-time endpoints
+│  │  ├─ room/                          # Chat room routes
 │  │  ├─ layout.tsx                     # Root application layout
 │  │  └─ page.tsx                       # Landing page
 │  ├─ components/                       # Shared UI components

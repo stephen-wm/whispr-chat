@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { QueryProvider } from "./query-provider";
+import { RealtimeProvider } from "./realtime-provider";
 import { ThemeProvider } from "./theme-provider";
 
 // Single <Providers> wrapper imported by the root layout.
@@ -14,6 +15,8 @@ export const Providers = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => (
   <ThemeProvider>
-    <QueryProvider>{children}</QueryProvider>
+    <QueryProvider>
+      <RealtimeProvider>{children}</RealtimeProvider>
+    </QueryProvider>
   </ThemeProvider>
 );
