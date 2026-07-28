@@ -2,10 +2,11 @@ import type { SVGProps } from "react";
 
 import { cn } from "@/lib/utils";
 
-export const Eclipse = ({
-  className,
-  ...props
-}: Readonly<SVGProps<SVGSVGElement>>) => (
+interface IconProps extends SVGProps<SVGSVGElement> {
+  className?: string;
+}
+
+export const Eclipse = ({ className, ...props }: Readonly<IconProps>) => (
   <svg
     fill="none"
     stroke="currentColor"
