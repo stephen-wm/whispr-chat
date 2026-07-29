@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixed
+
+- Chat history failing to load on refresh; `GET /messages` was reading from a mistyped Redis key (`messages: {roomId}` with a stray space) that never matched what `POST /messages` actually wrote to (in `features/room/server/messages.ts`)
+
 ## [0.4.0] - 2026-07-28
 
 ### Added
