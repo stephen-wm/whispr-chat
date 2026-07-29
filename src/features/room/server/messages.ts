@@ -23,7 +23,7 @@ export const messages = new Elysia({ prefix: "/messages" })
       }
 
       const raw = await redis.lrange<StoredMessage>(
-        `messages: ${roomId}`,
+        `messages:${roomId}`,
         0,
         -1
       );

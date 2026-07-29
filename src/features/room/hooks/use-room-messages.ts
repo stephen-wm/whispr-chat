@@ -47,9 +47,12 @@ export const useRoomMessages = (roomId: string) => {
     return [...uniqueMessages.values()];
   }, [history, realtimeMessages]);
 
+  const channels = useMemo(() => [roomId], [roomId]);
+  const events = useMemo(() => ["chat.message"] as const, []);
+
   useRealtime({
-    channels: [roomId],
-    events: ["chat.message"],
+    channels,
+    events,
     onData: ({ data }) => {
       setRealtimeMessages((prev) =>
         prev.some((message) => message.id === data.id) ? prev : [...prev, data]
