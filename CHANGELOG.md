@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Basic page-view analytics via Vercel Analytics, for visibility into real usage post-deploy
+
 ## [0.4.1] - 2026-07-29
 
 ### Fixed
