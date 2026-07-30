@@ -27,7 +27,7 @@ export const proxy = async (req: NextRequest) => {
   }>(`meta:${roomId}`);
 
   if (!meta) {
-    return NextResponse.redirect(new URL("/?error=ROOM_NOT_FOUND", req.url));
+    return NextResponse.redirect(new URL("/?notice=room-unavailable", req.url));
   }
 
   const existingToken = req.cookies.get("x-auth-token")?.value;
@@ -50,7 +50,7 @@ export const proxy = async (req: NextRequest) => {
 
   // User is not allowed to join room
   if (meta.connected.length >= 2) {
-    return NextResponse.redirect(new URL("/?error=ROOM_IS_FULL", req.url));
+    return NextResponse.redirect(new URL("/?notice=room-full", req.url));
   }
 
   const takenAnimals = new Set(meta.connected.map((entry) => entry.animal));

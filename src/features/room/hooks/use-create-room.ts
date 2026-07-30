@@ -24,7 +24,6 @@ export const useCreateRoom = () => {
 
       return roomId;
     },
-
     onSuccess: (roomId) => {
       router.push(`/room/${roomId}`);
     },

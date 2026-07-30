@@ -5,6 +5,7 @@ import * as React from "react";
 import { QueryProvider } from "./query-provider";
 import { RealtimeProvider } from "./realtime-provider";
 import { ThemeProvider } from "./theme-provider";
+import { ToastProvider } from "./toast-provider";
 
 // Single <Providers> wrapper imported by the root layout.
 // Add new providers here — root layout.tsx stays clean.
@@ -15,6 +16,7 @@ export const Providers = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => (
   <ThemeProvider>
+    <ToastProvider />
     <QueryProvider>
       <RealtimeProvider>{children}</RealtimeProvider>
     </QueryProvider>

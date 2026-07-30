@@ -92,7 +92,7 @@ This project enables two non-default options in `next.config.ts`:
 - [x] Anonymous username generation
 - [x] Chat room creation (2-user cap)
 - [x] Realtime messaging
-- [ ] 10-minute room TTL + expiry redirect
+- [x] 10-minute room TTL + expiry redirect
 - [ ] Rate limiting on message sends
 - [ ] E2E tests (Playwright)
 
