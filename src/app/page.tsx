@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense, useEffect, useRef } from "react";
+import { toast } from "sonner";
 
 import { GitHub } from "@/components/icons/github";
 import { Button } from "@/components/ui/button";
@@ -16,8 +19,35 @@ import { Spinner } from "@/components/ui/spinner";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useCreateRoom } from "@/features/room/hooks/use-create-room";
 
-export default function Home() {
+const NOTICE_MESSAGES: Record<string, string> = {
+  "room-full": "This room already has two people in it.",
+  "room-unavailable": "This room does not exist or has expired.",
+};
+
+const RoomHome = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const notice = searchParams.get("notice");
+  const hasShownNotice = useRef(false);
+
   const { mutate, isPending, error } = useCreateRoom();
+
+  useEffect(() => {
+    if (!notice || hasShownNotice.current) {
+      return;
+    }
+
+    const message = NOTICE_MESSAGES[notice];
+
+    if (!message) {
+      return;
+    }
+
+    hasShownNotice.current = true;
+
+    toast.error(message);
+    router.replace("/");
+  }, [notice, router]);
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center bg-zinc-50 relative">
@@ -125,4 +155,10 @@ export default function Home() {
       </footer>
     </div>
   );
+};
+
+export default function Home() {
+  <Suspense fallback={null}>
+    <RoomHome />
+  </Suspense>;
 }
