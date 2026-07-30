@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-07-30
+
 ### Added
 
 - Toast notifications (via `sonner`) for room-unavailable and room-full redirects, so leaving a dead or full room actually tells the user why instead of silently bouncing them home
@@ -142,7 +144,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enabled `turbopackFileSystemCacheForDev` in `next.config.ts` for faster local dev builds
 - Enabled `reactCompiler` in `next.config.ts` for automatic render optimization
 
-[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/stephen-wm/whispr-chat/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.3.0...v0.4.0
