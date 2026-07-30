@@ -6,6 +6,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Toast notifications (via `sonner`) for room-unavailable and room-full redirects, so leaving a dead or full room actually tells the user why instead of silently bouncing them home
+- Live room TTL countdown in the chat header, redirecting to the homepage with a notice once time expires
+
+### Changed
+
+- Standardized `proxy.ts`'s redirect params on a single `?notice=` convention (`room-full`, `room-unavailable`), replacing the previous `?error=ROOM_IS_FULL`/`?error=ROOM_NOT_FOUND` values that redirected into silence
+- Removed empty space between mutation function block and onSuccess block in `hooks/use-create-room.ts` file
+
 ## [0.5.0] - 2026-07-29
 
 ### Added
