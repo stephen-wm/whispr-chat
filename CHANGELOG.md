@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Toast notifications (via `sonner`) for room-unavailable and room-full redirects, so leaving a dead or full room actually tells the user why instead of silently bouncing them home
 - Live room TTL countdown in the chat header, redirecting to the homepage with a notice once time expires
+- Added a dedicated `NoticeHandler` component for the homepage's `?notice=` toast logic, scoped inside its own narrow `Suspense` boundary (required for `useSearchParams()`'s<br/>static-prerender requirements), kept separate from the page's visible content so a suspend/resume there can't blank out the whole homepage
 
 ### Changed
 
