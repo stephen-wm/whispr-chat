@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useRoomMessages } from "@/features/room/hooks/use-room-messages";
+import { useRoomTtl } from "@/features/room/hooks/use-room-ttl";
 import { useSendMessage } from "@/features/room/hooks/use-send-message";
 import type { ChatMessage } from "@/lib/realtime";
 import { cn } from "@/lib/utils";
@@ -25,6 +26,13 @@ const getCookie = (name: string): string | undefined => {
   return match?.split("=")[1];
 };
 
+const formatTimeRemaining = (seconds: number): string => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+
+  return `${mins} : ${secs.toString().padStart(2, "0")}`;
+};
+
 const groupMessages = (messages: ChatMessage[]) =>
   messages.map((message, index) => {
     const prev = messages[index - 1];
@@ -38,6 +46,7 @@ const groupMessages = (messages: ChatMessage[]) =>
   });
 
 export default function ChatRoomPage() {
+  const router = useRouter();
   const { roomId } = useParams<{ roomId: string }>();
   const [username, setUsername] = useState(() => getCookie("username") ?? "");
 
@@ -45,6 +54,7 @@ export default function ChatRoomPage() {
 
   const { messages, isLoading, error } = useRoomMessages(roomId);
   const { mutate: sendMessage, isPending } = useSendMessage(roomId);
+  const timeRemaining = useRoomTtl(roomId);
 
   const [draft, setDraft] = useState<string>("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,6 +65,12 @@ export default function ChatRoomPage() {
       top: scrollRef.current.scrollHeight,
     });
   }, [messages.length]);
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      router.replace("/?notice=room-unavailable");
+    }
+  }, [router, timeRemaining]);
 
   const handleSend = () => {
     const text = draft.trim();
@@ -97,6 +113,24 @@ export default function ChatRoomPage() {
               Room: <span className="font-mono">{roomId}</span>
             </div>
             <ThemeToggle className="border-0" />
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium text-muted-foreground">
+              Self Destruct:
+            </span>
+            <span
+              className={cn(
+                "flex items-center gap-2 text-sm font-bold",
+                timeRemaining !== null && timeRemaining < 60
+                  ? "text-red-500"
+                  : "text-amber-500"
+              )}
+            >
+              {timeRemaining === null
+                ? "-- : --"
+                : formatTimeRemaining(timeRemaining)}
+            </span>
           </div>
         </div>
       </header>
