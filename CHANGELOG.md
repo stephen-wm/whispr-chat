@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-08-01
+
 ### Added
 
 - Join notices in chat history: when someone connects to a room for the first time, a persisted system entry ("username joined the room") appears in the timeline for both participants, surviving refreshes
@@ -154,7 +156,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enabled `turbopackFileSystemCacheForDev` in `next.config.ts` for faster local dev builds
 - Enabled `reactCompiler` in `next.config.ts` for automatic render optimization
 
-[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/stephen-wm/whispr-chat/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/stephen-wm/whispr-chat/compare/v0.4.1...v0.5.0
