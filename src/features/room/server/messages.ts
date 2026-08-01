@@ -70,6 +70,7 @@ export const messages = new Elysia({ prefix: "/messages" })
         sender: username,
         text,
         timestamp: Date.now(),
+        type: "message",
       };
 
       const { success } = await messageRateLimit.limit(auth.token);

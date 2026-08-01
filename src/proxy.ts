@@ -2,6 +2,8 @@ import { nanoid } from "nanoid";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import { realtime } from "@/lib/realtime";
+import type { ChatMessage } from "@/lib/realtime";
 import { redis } from "@/lib/redis";
 
 const ANIMALS = ["wolf", "hawk", "bear", "shark"];
@@ -83,6 +85,17 @@ export const proxy = async (req: NextRequest) => {
   await redis.hset(`meta:${roomId}`, {
     connected: [...meta.connected, { animal, token, username }],
   });
+
+  const joinEntry: ChatMessage = {
+    id: nanoid(),
+    roomId,
+    sender: username,
+    timestamp: Date.now(),
+    type: "join",
+  };
+
+  await redis.rpush(`message:${roomId}`, joinEntry);
+  await realtime.channel(roomId).emit("chat.message", joinEntry);
 
   return response;
 };
