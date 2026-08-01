@@ -94,6 +94,7 @@ This project enables two non-default options in `next.config.ts`:
 - [x] Realtime messaging
 - [x] 10-minute room TTL + expiry redirect
 - [x] Rate limiting on message sends and room creation
+- [x] Emit user joined room message
 - [ ] E2E tests (Playwright)
 
 ## Project Structure
