@@ -2,6 +2,8 @@ import { Elysia } from "elysia";
 import { nanoid } from "nanoid";
 import z from "zod";
 
+import { RateLimitError } from "@/lib/errors";
+import { messageRateLimit } from "@/lib/ratelimit";
 import { realtime } from "@/lib/realtime";
 import type { ChatMessage } from "@/lib/realtime";
 import { redis } from "@/lib/redis";
@@ -11,6 +13,16 @@ import { authMiddleware } from "./auth";
 type StoredMessage = ChatMessage & { token: string };
 
 export const messages = new Elysia({ prefix: "/messages" })
+  .error({ RateLimitError })
+  .onError(({ code, set }) => {
+    if (code === "RateLimitError") {
+      set.status = 429;
+
+      return {
+        error: "Too many requests. Please slow down.",
+      };
+    }
+  })
   .use(authMiddleware)
   .get(
     "/",
@@ -19,7 +31,7 @@ export const messages = new Elysia({ prefix: "/messages" })
       const roomExists = await redis.exists(`meta:${roomId}`);
 
       if (!roomExists) {
-        throw new Error("Room does not exist.");
+        throw new Error("Room does not exist");
       }
 
       const raw = await redis.lrange<StoredMessage>(
@@ -49,7 +61,7 @@ export const messages = new Elysia({ prefix: "/messages" })
       const roomExists = await redis.exists(`meta:${roomId}`);
 
       if (!roomExists) {
-        throw new Error("Room does not exist.");
+        throw new Error("Room does not exist");
       }
 
       const message: ChatMessage = {
@@ -59,6 +71,12 @@ export const messages = new Elysia({ prefix: "/messages" })
         text,
         timestamp: Date.now(),
       };
+
+      const { success } = await messageRateLimit.limit(auth.token);
+
+      if (!success) {
+        throw new RateLimitError();
+      }
 
       await redis.rpush(`messages:${roomId}`, {
         ...message,
@@ -72,5 +90,9 @@ export const messages = new Elysia({ prefix: "/messages" })
         text: z.string().max(1000),
       }),
       query: z.object({ roomId: z.string() }),
+      response: {
+        200: z.void(),
+        429: z.object({ error: z.string() }),
+      },
     }
   );

@@ -53,6 +53,10 @@ const NoticeHandler = () => {
 export default function Home() {
   const { mutate, isPending, error } = useCreateRoom();
 
+  if (error) {
+    toast.error(error?.message);
+  }
+
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
@@ -133,7 +137,7 @@ export default function Home() {
               </ol>
             </CardContent>
 
-            <CardFooter>
+            <CardFooter className="flex flex-col">
               <Button
                 onClick={() => mutate()}
                 className="w-full"
@@ -148,11 +152,11 @@ export default function Home() {
                 )}
               </Button>
 
-              {error && (
-                <p className="w-full text-sm text-red-500 bg-red-50 dark:bg-red-950/20 p-3 rounded-md border border-red-200 dark:border-red-800">
+              {/* {error && (
+                <p className="block w-full text-sm text-red-500 bg-red-50 dark:bg-red-950/20 p-3 rounded-md border border-red-200 dark:border-red-800">
                   {error.message || "Failed to create room"}
                 </p>
-              )}
+              )} */}
             </CardFooter>
           </Card>
         </main>

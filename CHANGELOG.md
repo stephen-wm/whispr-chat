@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Rate limiting on `POST /messages` (sliding window, per auth token) and `POST /room/create` (sliding window, per IP) via `@upstash/ratelimit`, with `429` responses surfaced as toasts; a specific "slow down" message for messages, and the server-computed cool down duration for room creation
+
 ## [0.6.0] - 2026-07-30
 
 ### Added
