@@ -93,7 +93,7 @@ This project enables two non-default options in `next.config.ts`:
 - [x] Chat room creation (2-user cap)
 - [x] Realtime messaging
 - [x] 10-minute room TTL + expiry redirect
-- [ ] Rate limiting on message sends
+- [x] Rate limiting on message sends and room creation
 - [ ] E2E tests (Playwright)
 
 ## Project Structure
