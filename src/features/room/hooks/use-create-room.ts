@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 import { api } from "@/lib/eden";
 
@@ -10,19 +11,20 @@ export const useCreateRoom = () => {
 
   return useMutation({
     mutationFn: async () => {
-      const response = await api.room.create.post();
+      const { data, error } = await api.room.create.post();
 
-      if (response.status !== 200) {
-        throw new Error("Failed to create room");
+      if (error) {
+        if (error.status === 429) {
+          throw new Error(error.value.error);
+        }
+
+        throw error;
       }
 
-      const roomId = response.data?.roomId;
-
-      if (!roomId) {
-        throw new Error("Room ID was not returned");
-      }
-
-      return roomId;
+      return data.roomId;
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to create room.");
     },
     onSuccess: (roomId) => {
       router.push(`/room/${roomId}`);
