@@ -4,13 +4,24 @@ import { z } from "zod";
 
 import { redis } from "@/lib/redis";
 
-const message = z.object({
+const messageEntry = z.object({
   id: z.string(),
   roomId: z.string(),
   sender: z.string(),
   text: z.string(),
   timestamp: z.number(),
+  type: z.literal("message"),
 });
+
+const joinEntry = z.object({
+  id: z.string(),
+  roomId: z.string(),
+  sender: z.string(),
+  timestamp: z.number(),
+  type: z.literal("join"),
+});
+
+const message = z.discriminatedUnion("type", [messageEntry, joinEntry]);
 
 const schema = {
   chat: {
