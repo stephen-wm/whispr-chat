@@ -44,7 +44,9 @@ export const useRoomMessages = (roomId: string) => {
       }
     }
 
-    return [...uniqueMessages.values()];
+    return [...uniqueMessages.values()].toSorted(
+      (a, b) => a.timestamp - b.timestamp
+    );
   }, [history, realtimeMessages]);
 
   const channels = useMemo(() => [roomId], [roomId]);

@@ -33,15 +33,21 @@ const formatTimeRemaining = (seconds: number): string => {
   return `${mins} : ${secs.toString().padStart(2, "0")}`;
 };
 
-const groupMessages = (messages: ChatMessage[]) =>
-  messages.map((message, index) => {
-    const prev = messages[index - 1];
-    const next = messages[index + 1];
+const groupMessages = (entries: ChatMessage[]) =>
+  entries.map((entry, index) => {
+    if (entry.type === "join") {
+      return { ...entry, isFirstInGroup: true, isLastInGroup: true };
+    }
+
+    const prev = entries[index - 1];
+    const next = entries[index + 1];
 
     return {
-      ...message,
-      isFirstInGroup: !prev || prev.sender !== message.sender,
-      isLastInGroup: !next || next.sender !== message.sender,
+      ...entry,
+      isFirstInGroup:
+        !prev || prev.type !== "message" || prev.sender !== entry.sender,
+      isLastInGroup:
+        !next || next.type !== "message" || next.sender !== entry.sender,
     };
   });
 
@@ -115,7 +121,7 @@ export default function ChatRoomPage() {
             <ThemeToggle className="border-0" />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row items-center gap-0 md:gap-2">
             <span className="text-xs font-medium text-muted-foreground">
               Self Destruct:
             </span>
@@ -157,23 +163,35 @@ export default function ChatRoomPage() {
                 </p>
               );
             } else {
-              content = grouped.map((message) => {
-                const isOwn = message.sender === username;
+              content = grouped.map((entry) => {
+                if (entry.type === "join") {
+                  return (
+                    <p
+                      key={entry.id}
+                      className="my-2 text-center text-xs text-muted-foreground"
+                    >
+                      {entry.sender} joined the room
+                    </p>
+                  );
+                }
+
+                const isOwn = entry.sender === username;
+
                 return (
                   <div
-                    key={message.id}
+                    key={entry.id}
                     className={cn(
                       `flex ${isOwn ? "justify-end" : "justify-start"} ${
-                        message.isFirstInGroup ? "mt-3" : "mt-1"
+                        entry.isFirstInGroup ? "mt-3" : "mt-1"
                       }`
                     )}
                   >
                     <div
                       className={`flex w-fit max-w-[70%] flex-col ${isOwn ? "items-end" : "items-start"}`}
                     >
-                      {message.isFirstInGroup && !isOwn && (
+                      {entry.isFirstInGroup && !isOwn && (
                         <span className="mb-1 px-3 text-xs font-medium text-muted-foreground">
-                          {message.sender}
+                          {entry.sender}
                         </span>
                       )}
                       <div
@@ -182,15 +200,15 @@ export default function ChatRoomPage() {
                           isOwn
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted text-foreground",
-                          isOwn && message.isLastInGroup
+                          isOwn && entry.isLastInGroup
                             ? "rounded-br-md mb-4"
                             : "",
-                          !isOwn && message.isLastInGroup
+                          !isOwn && entry.isLastInGroup
                             ? "rounded-bl-md mb-4"
                             : "",
                         ].join(" ")}
                       >
-                        {message.text}
+                        {entry.text}
                       </div>
                     </div>
                   </div>
