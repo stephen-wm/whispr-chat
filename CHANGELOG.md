@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+
+- Join notices in chat history: when someone connects to a room for the first time, a persisted system entry ("username joined the room") appears in the timeline for both participants, surviving refreshes
+
 ## [0.7.0] - 2026-08-01
 
 ### Added
