@@ -45,7 +45,7 @@
     "@tanstack/react-query": "5.101.4",
     "@tanstack/react-query-devtools": "5.101.4",
     "@upstash/ratelimit": "2.0.8",
-    "@upstash/realtime": "1.0.4",
+    "@upstash/realtime": "1.1.0",
     "@upstash/redis": "1.38.0",
     "@vercel/analytics": "2.0.1",
     "class-variance-authority": "0.7.1",
