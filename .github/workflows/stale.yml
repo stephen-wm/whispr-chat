@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/stale@v10
+      - uses: actions/stale@v11
         with:
           stale-issue-message: >
             This issue has been automatically marked as stale due to inactivity. It will be closed if no further activity occurs within 30 days. If it is still relevant, please leave a comment or update the issue.
