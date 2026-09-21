@@ -84,7 +84,7 @@
     "markdownlint-cli2": "0.23.2",
     "oxfmt": "0.60.0",
     "oxlint": "1.75.0",
-    "release-it": "21.0.0",
+    "release-it": "21.1.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "ultracite": "7.9.4"
